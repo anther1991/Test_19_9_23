@@ -1,0 +1,483 @@
+﻿@page "/"
+@inject NavigationManager NavManager
+@inject Identity identity
+@inject LoadingScreen loadingScreen
+
+@if (identity.USERNAME == null || identity.USERNAME?.Trim().Length == 0)
+{
+    <div class="container-fluid" style="margin-top:150px">
+        <div class="row">
+            <div class="col-md-5 col-lg-4 col-xl-3 mx-auto">
+                <div class="row mb-4">
+                    <img class="col-6 mx-auto" src="/images/logo.png" />
+                </div>
+                <div class="display-6">
+                    Hợp đồng điện tử
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input @bind="usernameQLKH" type="text" class="form-control" id="usernameQLKH" placeholder="Tên đăng nhập" name="username">
+                    <label for="username">Tên đăng nhập</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input @bind="passwordQLKH" type="password" class="form-control" id="passwordQLKH" placeholder="Mật khẩu" name="password">
+                    <label for="password">Mật khẩu</label>
+                </div>
+                <div class="text-danger" style="display:@(errorLoginQLKH!=""?"block":"none");">@errorLoginQLKH</div>
+                <button @onclick="loginQLKH" type="button" class="btn btn-outline-primary mt-3">Đăng nhập</button>
+            </div>
+
+        </div>
+    </div>
+}
+
+@if (identity.USERNAME?.Trim().Length > 0 && (identity.currentPage == 1 || identity.ACCESSTOKEN == "" || identity.ACCESSTOKEN == null))
+{
+    <div class="container-fluid" style="margin-top:150px">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Đăng nhập eContract Mobifone</h1>
+                <div class="mb-3 mt-3">
+                    <label for="usernameMBF" class="form-label">Tên đăng nhập</label>
+                    <input @bind=usernameMBF type="text" class="form-control" id="usernameMBF" required>
+                </div>
+                <div class="mb-3">
+                    <label for="passwordMBF" class="form-label">Mật khẩu</label>
+                    <input @bind=passwordMBF type="password" class="form-control" id="passwordMBF" required>
+                </div>
+                <button @onclick=loginMBF class="btn btn-primary">Đăng nhập eContract</button>
+                <div class="text-danger">
+                    @errorLoginMBF
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (identity.USERNAME?.Trim().Length > 0 && identity.currentPage == 2 && identity.ACCESSTOKEN != "")
+{
+    <div class="container-fluid" style="margin-top:0px">
+        <div class="row mb-3">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <input @bind=IDKH type="text" class="form-control" id="customerID" name="customerID" placeholder="Nhập IDKH">
+                </div>
+                <button @onclick=getCustomerInfo class="btn btn-primary mt-2 px-3">Tìm</button>
+            </div>
+        </div>
+        @if (customer != null)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Thông tin khách hàng</h1>
+                    <table class="table table-primary table-striped">
+                        <tbody>
+                            <tr>
+                                <th>IDKH</th>
+                                <td>@customer.IDKH</td>
+                            </tr>
+                            <tr>
+                                <th>Danh bộ</th>
+                                <td>
+                                    @(
+                                        customer.MADP + customer.MADB
+                                        )
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tên KH</th>
+                                <td>@customer.TENKH</td>
+                            </tr>
+                            <tr>
+                                <th>Địa chỉ</th>
+                                <td>@customer.DIACHI</td>
+                            </tr>
+                            <tr>
+                                <th>Điện thoại</th>
+                                <td>@customer.SODT</td>
+                            </tr>
+                            <tr>
+                                <th>Giá</th>
+                                <td>
+                                    @(
+                                        customer.MALKHDB + customer.SONK
+                                        )
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Đồng hồ</th>
+                                <td>
+                                    @(
+                                        $"{customer.TENDH} {customer.TENKICHCO}"
+                                        )
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ngày tạo</th>
+                                <td>@customer.NGAYTAO?.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                            <tr>
+                                <th>Ngày vô nước</th>
+                                <td>@customer.NGAYDK?.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                            <tr>
+                                <th>Chi nhánh</th>
+                                <td>
+                                    @(
+                                        customer.MAKV == "2A" ? "Chi nhánh Cấp nước Số 2" : "Chi nhánh Cấp nước Bình Thủy"
+                                        )
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button @onclick="()=>displayFormTaoHopDong(722.ToString())" class="btn btn-primary mt-2">Tạo hợp đồng</button>
+                </div>
+            </div>
+            @if (showFormTaoHopDong)
+            {
+                <div class="row mt-5 mb-5">
+                    <div class="col-md-6">
+                        <h1 class="text-center">Hợp đồng cung cấp nước sạch</h1>
+                        <div class="mb-3 mt-3">
+                            <label for="SOHD" class="form-label">Số hợp đồng</label>
+                            <input @bind=SOHD type="text" class="form-control" id="SOHD" required>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="NGUOIKY" class="form-label">Người ký</label>
+                            <input @bind=NGUOIKY type="text" class="form-control" id="NGUOIKY" required>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="SODTHD" class="form-label">Số điện thoại người ký hợp đồng</label>
+                            <input @bind=SODTHD type="text" class="form-control" id="SODTHD" required>
+                            @if (SODTs != null && SODTs.Count > 0)
+                            {
+                                foreach (string x in SODTs)
+                                {
+                                    <button class="btn btn-outline-primary mt-2 mx-1" @onclick="()=>{SODTHD = x;}">@x</button>
+                                }
+                            }
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="NGAYHD" class="form-label">Ngày</label>
+                                    <input @bind=NGAYHD type="text" class="form-control" id="NGAYHD" required>
+                                </div>
+                                <div class="col-4">
+                                    <label for="THANGHD" class="form-label">Tháng</label>
+                                    <input @bind=THANGHD type="text" class="form-control" id="THANGHD" required>
+                                </div>
+                                <div class="col-4">
+                                    <label for="NAMHD" class="form-label">Năm</label>
+                                    <input @bind=NAMHD type="text" class="form-control" id="NAMHD" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="MAUHD" class="form-label">Mẫu hợp đồng</label>
+                            <input @bind=MAUHD.name type="text" class="form-control" id="MAUHD" disabled required>
+                        </div>
+                        <button @onclick="()=>{taoHopDongTheoMau(722.ToString());}" class="btn btn-primary mt-2">Xác nhận</button>
+                        <div class="text-danger">
+                            @errorTaoHopDong
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @if (errorLookupCustomer != "")
+        {
+            <div class="row">
+                <div class="text-danger">
+                    @errorLookupCustomer
+                </div>
+            </div>
+        }
+        @if (pdfLink != null && pdfLink.Trim() != "")
+        {
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mdHopDong">
+                Xem hợp đồng
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mdHopDong">
+                Ký hợp đồng
+            </button>
+        }
+    </div>
+}
+
+<div class="modal" id="mdHopDong">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                @if (pdfLink != null && pdfLink.Trim() != "")
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <iframe style="width:100%; height:500px" src="https://drive.google.com/viewerng/viewer?embedded=true&url=@pdfLink" />
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Đóng</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div>@errorTest</div>
+</div>
+@code {
+
+    string? usernameQLKH = "";
+    string? passwordQLKH = "";
+    string errorLoginQLKH = "";
+
+    string? usernameMBF = "";
+    string? passwordMBF = "";
+    string? errorLoginMBF = "";
+
+    string? IDKH = "";
+    Customer? customer = null;
+    string? errorLookupCustomer = "";
+
+    bool showFormTaoHopDong = false;
+    string? SOHD = "";
+    bool isSOHDTENHOPDONG = true;
+    string? SODTHD = "";
+    List<string>? SODTs = new List<string>();
+    string? NGUOIKY = "";
+    string? NGAYHD = "", THANGHD = "", NAMHD = "";
+    string errorTaoHopDong = "";
+    eContractTemplate MAUHD = new eContractTemplate();
+
+    string? pdfLink = "";
+
+    string? errorTest = "";
+
+    private async void uploadSignImage()
+    {
+        try
+        {
+            string accesstoken = "eyJhbGciOiJSUzI1NiJ9.eyJvcmdhbml6YXRpb25JZCI6MjM0NiwicGFzc3dvcmRDaGFuZ2UiOjEsInBob25lIjoiMjkyMzg4MTY5MCIsImFjY2Vzc0tleSI6Ijg2MzVkMjVhLTRmNzAtNDk2NC04OGE3LTgxMGY5YzhiYmU5MSIsIm5hbWUiOiJQaGFuIFRo4buLIFRo4buneSBUacOqbiIsInR5cGVJZCI6MCwic2hhcmVJZCI6MCwiaWQiOjMxMjYsIm9yZ2FuaXphdGlvbkNoYW5nZSI6MCwiZW1haWwiOiJtcy50aWVucGhhbkBnbWFpbC5jb20iLCJzdWIiOiJDVVNUT01FUiIsImV4cCI6MTY5MzYzOTE3M30.AZ4OLU9H2q1kzxnkHIHUc9_cxhtKJ9fTqnwUSPIV4Rx5v6BqsOb5d0xaEOta-FGbk6CCKImhD9-F21iMslR9HtIThvdEuPoaEDATHZnS6MoEj901FRTCLF2XVLkCspm-Wy4rnQO5hFtqusGWBYdj-1LpTh0i8w1CktOZ3-4W5zokAVuuH6TJlH6b3JSzn3SBSyL4RYMYTPAaI6v_TN7PyIvgyYJfsfpJ5IPLQliW83UVECEX59njGz3z9lA6mnKUri9aKVdO04zBVLfJ1XaINUX88plNJDcdo4qbvjaMh6qN9M4YIaX7gmZqvPUBH11bKuSj-t-_dQijiIF6rjUTdA";
+            Ulti.uploadSignImage(accesstoken, identity.ORGID, "hinhcuatam2.jpg", );
+        }
+        catch (Exception a)
+        {
+            errorTest = a.Message;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        identity.updateIndexLayout = updateState;
+        identity.updateLayout();
+    }
+
+    private async Task<bool> updateState()
+    {
+        StateHasChanged();
+        await Task.Yield();
+        return true;
+    }
+
+    private async void loginQLKH()
+    {
+        await loadingScreen.Show();
+        try
+        {
+            errorLoginQLKH = "";
+            (string?, string?) result = Ulti.login(usernameQLKH, passwordQLKH);
+            if (result.Item1 != null && result.Item1 != "")
+            {
+                identity.USERNAME = result.Item1;
+                identity.TENNV = result.Item2;
+
+                (string?, string?) result2 = Ulti.getMBFAccount(identity.USERNAME);
+                if (result2.Item1 != null && result2.Item1 != "" && result2.Item2 != null && result2.Item2 != "")
+                {
+                    identity.USERNAMEMBF = usernameMBF = result2.Item1;
+                    identity.PASSWORDMBF = passwordMBF = result2.Item2;
+
+                    TokenResponse? tokenObject = await Ulti.getMBFToken(usernameMBF, passwordMBF);
+                    if (tokenObject != null && tokenObject?.code == "00")
+                    {
+                        identity.ACCESSTOKEN = tokenObject.access_token;
+                        identity.currentPage = 2;
+                    }
+                    else
+                    {
+                        errorLoginMBF = "Tài khoản eContract không hợp lệ";
+                        identity.currentPage = 1;
+                    }
+                }
+                else
+                {
+                    identity.currentPage = 1;
+                }
+            }
+        }
+        catch (Exception a)
+        {
+            errorLoginQLKH = a.Message;
+        }
+        await loadingScreen.Hide();
+        StateHasChanged();
+    }
+
+    private async void loginMBF()
+    {
+        await loadingScreen.Show();
+        try
+        {
+            errorLoginMBF = "";
+            if (usernameMBF == null || usernameMBF?.Trim() == "" || passwordMBF == null || passwordMBF == "")
+                throw new Exception("Vui lòng điền đẩy đủ Username và Password");
+            usernameMBF = usernameMBF?.Trim();
+            TokenResponse? tokenObject = await Ulti.getMBFToken(usernameMBF, passwordMBF);
+            if (tokenObject != null && tokenObject?.code == "00")
+            {
+                identity.ACCESSTOKEN = tokenObject.access_token;
+                if (identity.USERNAMEMBF == null || identity.USERNAMEMBF != usernameMBF || identity.PASSWORDMBF == null || identity.PASSWORDMBF != passwordMBF)
+                {
+                    identity.USERNAMEMBF = usernameMBF;
+                    identity.PASSWORDMBF = passwordMBF;
+
+                    Ulti.insertMBFAccount(identity.USERNAME, usernameMBF, passwordMBF);
+                }
+                identity.currentPage = 2;
+            }
+            else
+            {
+                errorLoginMBF = "Tài khoản eContract không hợp lệ";
+            }
+        }
+        catch (Exception a)
+        {
+            errorLoginMBF = a.Message;
+        }
+        await loadingScreen.Hide();
+        StateHasChanged();
+    }
+
+    private async void getCustomerInfo()
+    {
+        await loadingScreen.Show();
+        showFormTaoHopDong = false;
+        errorLookupCustomer = "";
+        try
+        {
+            if (IDKH == null || IDKH == "" || !int.TryParse(IDKH, out _))
+                throw new Exception("IDKH không hợp lệ");
+            customer = Ulti.getCustomerInfo(IDKH);
+            if (customer == null)
+                errorLookupCustomer = "Không tìm thấy khách hàng này";
+        }
+        catch (Exception a)
+        {
+            errorLookupCustomer = a.Message;
+        }
+        await loadingScreen.Hide();
+        StateHasChanged();
+    }
+
+    private async void displayFormTaoHopDong(string idTemplate)
+    {
+        errorTaoHopDong = "";
+        showFormTaoHopDong = true;
+        try
+        {
+            if (customer != null)
+            {
+                NGUOIKY = customer.TENKH;
+                DateTime ngayHienTai = DateTime.Now;
+                NGAYHD = ngayHienTai.Day.ToString();
+                THANGHD = ngayHienTai.Month.ToString();
+                NAMHD = ngayHienTai.Year.ToString();
+                SODTs = Ulti.findPhoneNumberFromText(customer.SODT, Ulti.getDauSoDiDong());
+                if (SODTs != null)
+                {
+                    SODTHD = SODTs[0];
+                }
+            }
+            else throw new Exception("Chưa có thông tin khách hàng");
+            List<eContractTemplate>? templates = await Ulti.geteContractTemplate(identity.ACCESSTOKEN ?? "", identity.USERNAMEMBF ?? "");
+            if (templates != null)
+            {
+                MAUHD = new eContractTemplate();
+                foreach (eContractTemplate a in templates)
+                    if (a.id == idTemplate)
+                    {
+                        MAUHD.id = a.id;
+                        MAUHD.name = a.name;
+                    }
+            }
+        }
+        catch (Exception a)
+        {
+            errorTaoHopDong = a.Message;
+        }
+        StateHasChanged();
+    }
+
+    private async void taoHopDongTheoMau(string idTemplate)
+    {
+        await loadingScreen.Show();
+        errorTaoHopDong = "";
+        try
+        {
+            if (idTemplate == "722")
+            {
+                eContract722 eContract = new eContract722()
+                    {
+                        TENHOPDONG = SOHD ?? "",
+                        SOHOPDONG = SOHD ?? "",
+                        NGAYHETHANKY = DateTime.Now.AddDays(30).ToString("dd/MM/yyyy"),
+                        TENKH = customer?.TENKH ?? "",
+                        DIACHI = customer?.DIACHI ?? "",
+                        IDKH = customer?.IDKH.ToString() ?? "",
+                        DONGHO = customer?.TENKICHCO ?? "",
+                        ONG = "",
+                        NGAYLAPDAT = "",
+                        NGAY = NGAYHD ?? "",
+                        THANG = THANGHD ?? "",
+                        NAM = NAMHD ?? "",
+                        CHINHANH = customer?.MAKV == "2A" ? "Số 2" : "Bình Thủy",
+                        SODTCHINHANH = customer?.MAKV == "2A" ? "02923.811572" : "02923.883744",
+                        DAIDIENBENB = NGUOIKY ?? "",
+                        DIACHIBENB = customer?.DIACHI ?? "",
+                        DAIDIENBENA = "Trần Thanh Phong",
+                        EMAILBENA = "hopdongdientuct2@gmail.com",
+                        SODTNGUOIKY = SODTHD ?? ""
+                    };
+                ;
+                eContractResponse? result = await Ulti.createMBFEcontract(identity.ACCESSTOKEN ?? "", Ulti.createExcelFromEcontract722(eContract, identity.USERNAME ?? ""), idTemplate);
+                if (result != null && result?.id != "")
+                {
+                    errorTaoHopDong = result?.id + " - " + result?.success;
+                    List<eContractFile>? fileHopDongs = await Ulti.getEcontractPDFFile(identity.ACCESSTOKEN ?? "", result?.id ?? "");
+                    if (fileHopDongs != null)
+                    {
+                        foreach (eContractFile a in fileHopDongs)
+                        {
+                            if (a.type == "2")
+                                pdfLink = a.path;
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception a)
+        {
+            errorTaoHopDong = a.Message;
+        }
+        await loadingScreen.Hide();
+        StateHasChanged();
+    }
+}

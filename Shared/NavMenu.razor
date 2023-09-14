@@ -1,0 +1,51 @@
+﻿@inject Identity identity
+@inject NavigationManager NavManager
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <div class="dropdown text-white changeCursor">
+            <span class="dropdown-toggle" data-bs-toggle="dropdown">@identity.TENNV</span>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item changeCursor" href="#" @onclick="ConfigureEcontractAccount">Cấu hình tài khoản eContract</li>
+                <li class="dropdown-item changeCursor" href="#" @onclick="LogOut">Đăng xuất</li>
+            </ul>
+        </div>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span style="margin-left:10px" class="oi oi-home" aria-hidden="true"></span> Hợp đồng điện tử
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    private async void LogOut()
+    {
+        identity.clear();
+        NavManager.NavigateTo(NavManager.BaseUri);
+
+        await identity.updateLayout();
+    }
+
+    private async void ConfigureEcontractAccount()
+    {
+        identity.currentPage = 1;
+        await identity.updateLayout();
+    }
+}

@@ -1,0 +1,51 @@
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\appsettings.Development.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\appsettings.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.staticwebassets.runtime.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.exe
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.deps.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.runtimeconfig.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Hop dong dien tu.pdb
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\EPPlus.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\EPPlus.Interfaces.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\EPPlus.System.Drawing.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\System.Drawing.Common.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.RazorAssemblyInfo.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.RazorAssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets\msbuild.Hop dong dien tu.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets\msbuild.build.Hop dong dien tu.props
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.Hop dong dien tu.props
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.Hop dong dien tu.props
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets.pack.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets.build.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\staticwebassets.development.json
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\scopedcss\bundle\Hop dong dien tu.styles.css
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\scopedcss\projectbundle\Hop dong dien tu.bundle.scp.css
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.csproj.CopyComplete
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\refint\Hop dong dien tu.dll
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.pdb
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\Hop dong dien tu.genruntimeconfig.cache
+C:\Users\ADMIN\OneDrive\Dropbox\Cap nuoc\Work\Projects\Hop dong dien tu\obj\Release\net6.0\ref\Hop dong dien tu.dll
