@@ -379,6 +379,7 @@ namespace Hop_dong_dien_tu.Data
             }
         }
 
+        //abc
          //def
 
         public static Customer? getCustomerInfo(string IDKH)
