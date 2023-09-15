@@ -381,6 +381,7 @@ namespace Hop_dong_dien_tu.Data
 
         //abc
          //def
+         //jkl
 
         public static Customer? getCustomerInfo(string IDKH)
         {
