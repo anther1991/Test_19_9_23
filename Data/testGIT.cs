@@ -1,9 +1,10 @@
-﻿namespace Hop_dong_dien_tu.Data
+namespace Hop_dong_dien_tu.Data
 {
     public class testGIT
     {
-        //abc //Edit trên web 
+        //abc //Edit tr�n web 
         //hi hi
+	  //I'm shooked
     }
 }
 //klm
