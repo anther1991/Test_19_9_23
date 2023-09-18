@@ -2,7 +2,7 @@
 {
     public class testGIT
     {
-        //abc //agh
+        //abc
     }
 }
 //klm
